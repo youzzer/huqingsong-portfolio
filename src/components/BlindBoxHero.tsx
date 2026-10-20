@@ -104,7 +104,7 @@ export default function BlindBoxHero() {
     <div className={`${styles.content} ${entryReady ? styles.entered : styles.waiting}`}>
       <p className={styles.eyebrow}>个人作品集 PORTFOLIO · 2026</p>
       <img className={styles.avatar} src={`${import.meta.env.BASE_URL}img/avatar.webp`} alt="胡庆松证件照" width={480} height={480} decoding="async" />
-      <h1 id="hero-title" className={styles.title}>胡庆松</h1>
+      <h1 id="hero-title" className={styles.title}>胡庆松 <span className={styles.titleEn}>Youzzer</span></h1>
       <p className={styles.intention}>求职意向：运营（内容 / 商业 / 用户 / 活动 / 产品 / 策略等）</p>
       <p className={styles.description}>聚焦内容商业化，关注 ACG、影视综等泛娱乐内容生态，擅长活动与用户运营、BD 拓展及资源整合，并以产品思维与 AIGC 工具提升内容生产与营销效率，推动流量变现与商业化增长。</p>
       <div className={styles.actions}>

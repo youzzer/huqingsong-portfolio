@@ -78,6 +78,13 @@
   line-height: 1.15;
   letter-spacing: .04em;
 }
+/* 英文名 Youzzer：与中文名同行的副级展示 */
+.titleEn {
+  font-size: .45em;
+  font-weight: 600;
+  letter-spacing: .12em;
+  vertical-align: .25em;
+}
 .intention {
   margin: 0 0 22px;
   color: #aebfe9;
