@@ -5,6 +5,3 @@ dist-ssr/
 .DS_Store
 *.log
 .vite/
-
-# 作品集 PDF（111MB 超 GitHub 单文件上限）：改由 GitHub Release 托管，不进仓库
-public/files/胡庆松-作品集.pdf
