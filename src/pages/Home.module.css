@@ -1,0 +1,63 @@
+.experienceSection{padding-bottom:72px}
+.experienceList{display:flex;flex-direction:column;gap:12px}
+.experienceRow{display:flex;gap:28px;padding:32px;border:1px solid rgba(255,255,255,.09);border-radius:14px}
+.primaryExperience{background:#121419;padding:38px 32px}
+.experienceIndex{flex:none;padding-top:7px;color:#747c8c;font-family:ui-monospace,monospace;font-size:12px}
+.experienceBody{flex:1;min-width:0}
+.experienceHeading{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.experienceHeading h3{display:flex;align-items:baseline;flex-wrap:wrap;gap:16px;font-size:28px;font-weight:600;letter-spacing:-.025em}
+.experienceHeading h3 span{color:#7e8696;font-size:10px;font-weight:400;letter-spacing:.2em}
+.experiencePeriod{flex:none;color:#959cac;font-size:12px;font-variant-numeric:tabular-nums}
+.experienceRole{margin-top:9px;color:#bac1ce;font-size:13px;line-height:1.7}
+.experienceSummary{margin-top:21px;color:#a0a8b6;font-size:14px;line-height:1.95;max-width:900px;text-wrap:pretty}
+.experienceLink{display:inline-flex;align-items:center;gap:20px;margin-top:22px;font-size:12px;color:#c8d2f4;line-height:1.8;transition:color .2s}
+.experienceLink:hover{color:#fff}
+.internExperience{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:32px;margin-top:6px}
+.internExperience .experienceIndex{padding-top:4px;color:#8a93a6}
+.internList{display:flex;flex-direction:column;gap:18px;margin-top:18px}
+.internItem{padding-left:16px;border-left:2px solid rgba(126,160,255,.35)}
+.internHeading{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;margin-bottom:6px}
+.internHeading strong{font-size:17px;font-weight:600;color:#e3e7ef}
+.internRole{font-size:12px;color:#aeb5c3}
+.internPeriod{font-size:11px;color:#7d8596;font-variant-numeric:tabular-nums;margin-left:auto}
+.internSummary{margin:0;color:#969fae;font-size:13px;line-height:1.8;max-width:900px}
+.dataSection{padding-top:56px;padding-bottom:20px}
+.companyDataList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:8px}
+.companyData{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:26px 28px}
+.dataCompanyHeading{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:14px}
+.dataCompanyHeading h3{display:flex;gap:12px;align-items:baseline;font-size:19px;font-weight:600}
+.dataCompanyHeading h3 span{font-size:9px;font-weight:400;letter-spacing:.18em;color:#778193}
+.dataPeriod{font-size:11px;line-height:1.6;color:#929bab;font-variant-numeric:tabular-nums}
+.dataHierarchy{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:22px}.dataLevel{min-width:0}.dataLevel h4{font-size:10px;letter-spacing:.12em;color:#a5b9e6;font-weight:500;margin:0 0 6px}.dataLevel .definitionRow{grid-template-columns:1fr;gap:4px;padding:8px 0}.dataLevel:first-child{padding-right:20px;border-right:1px solid #ffffff0d}.definitionList{margin:0}
+.definitionRow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px;padding:9px 0;border-top:1px solid rgba(255,255,255,.045);font-size:12px;line-height:1.65}
+.definitionRow dt{color:#c1c8d4;font-weight:500}
+.definitionRow dt span{display:block;margin-top:2px;font-size:10px;line-height:1.6;color:#8590a2;font-weight:400}
+.definitionRow dd{margin:0;color:#c4cbd7;font-size:12px;line-height:1.7;font-variant-numeric:tabular-nums;align-self:center}
+@media(max-width:1000px){.companyDataList{grid-template-columns:1fr}}
+@media(max-width:700px){.dataSection{padding-top:40px;padding-bottom:40px}.companyData{padding:22px 20px}.dataHierarchy{grid-template-columns:1fr;gap:14px}.dataLevel:first-child{padding-right:0;border-right:0}.dataCompanyHeading{align-items:flex-start;flex-direction:column;gap:6px}.definitionRow{grid-template-columns:1fr;gap:6px}.definitionRow dd{color:#cbd2de}}
+@media(min-width:1000px){.experienceSection>div,.dataSection>div{max-width:1120px}}
+@media(max-width:700px){
+ .experienceSection{padding-top:64px;padding-bottom:40px}
+ .experienceRow,.primaryExperience{padding:25px 20px;gap:15px}
+ .experienceHeading{align-items:flex-start;flex-direction:column;gap:8px}
+ .experienceHeading h3{font-size:25px;gap:12px}
+ .experiencePeriod{font-size:11px}
+ .experienceRole{font-size:12px}
+ .experienceSummary{font-size:13px;margin-top:17px;line-height:1.95}
+ .internExperience{padding:25px 20px;margin-top:4px}
+ .internList{gap:16px;margin-top:16px}
+ .internItem{padding-left:12px}
+ .internHeading strong{font-size:15px}
+ .internRole{font-size:11px}
+ .internPeriod{margin-left:0;width:100%}
+ .internSummary{font-size:12px}
+}
+.methodologySection{padding:56px 0}
+.methodologyGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.methodologyCard{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px;transition:transform .2s,border-color .2s}
+.methodologyCard:hover{border-color:rgba(126,160,255,.4);transform:translateY(-3px)}
+.methodologyTag{margin-bottom:14px}
+.methodologyTag span{display:inline-block;font-size:10px;letter-spacing:.14em;color:#9eb4f7;border:1px solid rgba(126,160,255,.35);border-radius:999px;padding:4px 10px}
+.methodologyTitle{font-size:17px;font-weight:600;margin:0 0 12px;color:#e8ecf5}
+.methodologySummary{font-size:13px;line-height:1.8;color:#9aa3b2;margin:0}
+@media(max-width:900px){.methodologyGrid{grid-template-columns:1fr}.methodologyCard{padding:22px}}

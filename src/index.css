@@ -1,0 +1,25 @@
+:root{
+  --bg:#08090C;--surface:#0F1115;--surface2:#16181D;
+  --text:#F5F6F8;--muted:#8B909B;--weak:#5A5F6B;
+  --primary:#2C4AD3;--primary-l:#4B66F6;--violet:#AEBDF0;
+  --stroke:rgba(255,255,255,.10);
+  --font-body:'Inter','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-display:'Instrument Serif','Noto Serif SC',serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+button,a{-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:inherit;text-decoration:none}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--primary-l);outline-offset:3px;border-radius:6px}
+::selection{background:var(--primary);color:#fff}
+em{font-family:var(--font-display);font-weight:400}
+h1,h2,h3,h4,p{margin:0}
+img{display:block;width:100%}
+[inert]{pointer-events:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}

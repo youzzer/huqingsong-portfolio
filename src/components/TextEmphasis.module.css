@@ -1,0 +1,10 @@
+.emphasis {
+  color: #edf3ff;
+  font-weight: 650;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+@media print {
+  .emphasis { color: inherit; font-weight: 700; }
+}
