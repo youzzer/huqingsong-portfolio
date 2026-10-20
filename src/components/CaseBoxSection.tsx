@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useId, useRef, useState, type CSSProperties } from 'react'
 import { selectFeaturedCases } from '../config/featuredCases'
 import { SectionHeader, useCaseDialog, useReducedMotion } from '../shared'
 import styles from '../Portfolio.module.css'
 import './CaseCarousel.css'
 
 export default function CaseBoxSection() {
+  const uid = useId().replace(/:/g, "")
   const open = useCaseDialog()
   const reduced = useReducedMotion()
   const ref = useRef<HTMLDivElement>(null)
-  const boxRef = useRef<HTMLVideoElement>(null)
   const touch = useRef<{ x: number; y: number } | null>(null)
   const swiped = useRef(false)
   const [selected, setSelected] = useState(() => selectFeaturedCases())
@@ -39,13 +39,6 @@ export default function CaseBoxSection() {
     const timer = window.setInterval(() => setIndex(i => (i + 1) % selected.length), 5000)
     return () => window.clearInterval(timer)
   }, [cycling, selected.length, index])
-  // 3D 渲染盲盒视频：跟轮播同频，可见+轮播中才播放；暂停/离屏/减弱动效时停在 poster 帧
-  useEffect(() => {
-    const video = boxRef.current
-    if (!video || reduced) return
-    if (cycling || opening) void video.play().catch(() => {})
-    else video.pause()
-  }, [cycling, opening, reduced])
   return <section id="work" className={`${styles.section} blindbox-section`}><div className={styles.container}>
     <SectionHeader label="" first="精选" italic="案例" />
     <div ref={ref} className={`case-carousel ${opening ? 'is-opening' : ''}`} role="region" aria-roledescription="轮播" aria-label="精选项目盲盒"
@@ -74,10 +67,48 @@ export default function CaseBoxSection() {
           </button>
         })}
         <button className="blindbox-holder" onClick={reopen} aria-label="换一组案例" disabled={opening}>
-          <video ref={boxRef} className="case-sculpture"
-            src={`${import.meta.env.BASE_URL}bg/box-loop.mp4`}
-            poster={`${import.meta.env.BASE_URL}bg/box-poster.jpg`}
-            muted loop playsInline preload="auto" disablePictureInPicture aria-hidden="true" />
+          <svg className="case-sculpture" viewBox="0 0 330 280" fill="none" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id={`${uid}-front`} x1="65" y1="151" x2="199" y2="238" gradientUnits="userSpaceOnUse"><stop stopColor="#424c60"/><stop offset=".16" stopColor="#29364f"/><stop offset=".52" stopColor="#1c2943"/><stop offset="1" stopColor="#111822"/></linearGradient>
+              <linearGradient id={`${uid}-side`} x1="217" y1="154" x2="280" y2="200" gradientUnits="userSpaceOnUse"><stop stopColor="#0b101a"/><stop offset=".6" stopColor="#151e2e"/><stop offset=".87" stopColor="#253449"/><stop offset="1" stopColor="#101722"/></linearGradient>
+              <linearGradient id={`${uid}-rim`} x1="78" y1="107" x2="242" y2="170" gradientUnits="userSpaceOnUse"><stop stopColor="#707b8d"/><stop offset=".18" stopColor="#414e64"/><stop offset=".55" stopColor="#263349"/><stop offset=".77" stopColor="#59687f"/><stop offset="1" stopColor="#263347"/></linearGradient>
+              <linearGradient id={`${uid}-lid`} x1="111" y1="19" x2="209" y2="132" gradientUnits="userSpaceOnUse"><stop stopColor="#434e60"/><stop offset=".22" stopColor="#283449"/><stop offset=".7" stopColor="#17233b"/><stop offset="1" stopColor="#0b1423"/></linearGradient>
+              <linearGradient id={`${uid}-lining`} x1="154" y1="40" x2="186" y2="126" gradientUnits="userSpaceOnUse"><stop stopColor="#0d1420"/><stop offset=".5" stopColor="#172236"/><stop offset="1" stopColor="#263349"/></linearGradient>
+              <linearGradient id={`${uid}-cavity`} x1="157" y1="127" x2="160" y2="175" gradientUnits="userSpaceOnUse"><stop stopColor="#03060b"/><stop offset="1" stopColor="#171e2a"/></linearGradient>
+              <linearGradient id={`${uid}-glint`}><stop stopColor="#bac3d1" stopOpacity=".65"/><stop offset=".45" stopColor="#8baddd" stopOpacity=".15"/><stop offset="1" stopColor="#819dc9" stopOpacity="0"/></linearGradient>
+              <radialGradient id={`${uid}-satin`} cx=".12" cy=".08" r=".95"><stop stopColor="#9aaac5" stopOpacity=".16"/><stop offset=".38" stopColor="#738cb2" stopOpacity=".05"/><stop offset="1" stopColor="#253551" stopOpacity="0"/></radialGradient>
+              <radialGradient id={`${uid}-shadow`}><stop stopColor="#000" stopOpacity=".9"/><stop offset="1" stopColor="#000" stopOpacity="0"/></radialGradient>
+            </defs>
+            <ellipse cx="167" cy="239" rx="150" ry="30" fill={`url(#${uid}-shadow)`}/>
+            <ellipse cx="165" cy="237" rx="112" ry="14" fill={`url(#${uid}-shadow)`}/>
+            <g className="case-lid">
+              <path d="M105 113 83 23Q81 15 89 14L256 42Q261 43 262 48L281 131 276 136Z" fill="#0b111b"/>
+              <path d="M83 23Q81 15 89 14L256 42 250 47 88 20Z" fill={`url(#${uid}-rim)`}/>
+              <path d="m250 47 6-5q5 1 6 6l19 83-5 5Z" fill="#293549"/>
+              <path d="M88 21 250 48 275 135 108 112Z" fill={`url(#${uid}-lid)`}/>
+              <path d="m100 33 138 24 19 64-142-23Z" fill="#090f19"/>
+              <path d="m105 37 130 23 17 55-134-22Z" fill={`url(#${uid}-lining)`}/>
+              <path d="m105 37 130 23 17 55" stroke="#526079" strokeOpacity=".28" strokeWidth=".55"/>
+              <path d="m89 21 161 27" stroke={`url(#${uid}-glint)`} strokeWidth=".65"/>
+              <path d="m115 98 142 23" stroke="#7d91ae" strokeOpacity=".16" strokeWidth=".5"/>
+            </g>
+            <path d="m49 154 59-42 168 24-59 47Z" fill={`url(#${uid}-rim)`}/>
+            <path d="m62 153 49-33 151 22-47 33Z" fill="#03060c"/>
+            <path d="m62 153 49-33 4 25-31 23Z" fill="#202b3c"/>
+            <path d="m111 120 151 22-19 20-128-17Z" fill="#0b1019"/>
+            <path d="m84 168 31-23 128 17-28 13Z" fill={`url(#${uid}-cavity)`}/>
+            <path d="m85 167 30-21 123 17" stroke="#64748c" strokeOpacity=".12" strokeWidth=".5"/>
+            <path d="m217 183 59-47 2 66q0 4-4 7l-58 40Z" fill={`url(#${uid}-side)`}/>
+            <path d="m49 154 168 29-1 66L57 221q-8-1-8-9Z" fill={`url(#${uid}-front)`}/>
+            <path d="m49 154 168 29-1 66L57 221q-8-1-8-9Z" fill={`url(#${uid}-satin)`}/>
+            <path d="m49 154 168 29-3 4-162-29Z" fill="#677790" fillOpacity=".26"/>
+            <path d="m52 158 162 29v57L58 218q-5-1-5-6" stroke={`url(#${uid}-glint)`} strokeWidth=".55"/>
+            <path d="m218 184 57-45" stroke="#96abc9" strokeOpacity=".28" strokeWidth=".65"/>
+            <path d="m217 187-1 57 58-39" stroke="#04080f" strokeWidth="1.5"/>
+            <path d="m58 221 157 28 59-40-2 4-57 39-155-28Z" fill="#080d15"/>
+            <path d="m126 190 22 4v5l-22-4Z" fill="#080e18"/>
+            <path d="m126 190 22 4" stroke="#7e8ca1" strokeWidth=".55" strokeOpacity=".5"/>
+          </svg>
           <span className="blindbox-action">换一组 <span aria-hidden="true">↻</span></span>
         </button>
       </div>
