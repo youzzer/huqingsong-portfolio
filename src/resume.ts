@@ -124,6 +124,7 @@ export const resumeCoreData: { company: string; en: string; period: string; rows
   ] },
   { company: '字节跳动', en: 'BYTEDANCE', period: '2024.08 — 2025.05', rows: [
     { scope: '互动 IP 商业化', period: '2024.08 — 2024.12', result: '服务 70+ 品牌、执行 40+ 项目 100% 按时交付；招商收入季度环比 +40%', sources: ['interactive'], emphasis: ['70+ 品牌', '40+ 项目', '100%', '+40%'] },
+    { scope: '代表客户', period: '2024.08 — 2024.12', result: '美妆有服务执行过海蓝之谜、Whoo，日化母婴有德祐、好奇，食品饮料有肯德基、舒化、霸王茶姬，服饰有 lululemon、UR、特步，3C 家电有小米、iQOO、石头科技等', sources: ['interactive'], emphasis: [] },
     { scope: '文娱 IP 商业化', period: '2024.12 — 2025.05', result: '25Q1 协助完成 98 单、实收 9875.25 万（完成率 98.75%）；对接商机 201 个、落袋率 48.75%；端上非标收入 YoY +20%', sources: ['entertainment', 'vertical'], emphasis: ['98 单', '9875.25 万', '98.75%', '201 个', '48.75%', '+20%'] },
   ], projects: [
     { scope: '孵化 IP · 欢迎来到我的人生', period: '垂类 IP 孵化', result: '售出抖音首档母婴纪实微综', sources: ['vertical'], emphasis: ['首档'] },
